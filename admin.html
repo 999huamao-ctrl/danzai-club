@@ -276,7 +276,9 @@
                 <!-- 公告管理 -->
                 <div id="announcementsTab" class="tab-content">
                     <h2 class="section-title">📢 公告管理</h2>
-                    <p style="color: var(--light-text); margin-bottom: 20px;">审核玩家提交的公告申请</p>
+                    <div style="background: linear-gradient(135deg, #00B894 0%, #55EFC4 100%); padding: 15px; border-radius: 10px; margin-bottom: 20px; color: white;">
+                        ✅ <strong>自动审核已开启</strong> - 玩家提交后自动发布，违规内容会被系统拦截
+                    </div>
                     <div id="announcementList"></div>
                 </div>
 
@@ -370,37 +372,20 @@
             } catch (e) {}
             
             const announcementList = document.getElementById('announcementList');
-            const pending = announcements.filter(a => a.status === 'pending');
             const published = announcements.filter(a => a.status === 'published');
             
             let html = '';
             
-            if (pending.length > 0) {
-                html += '<h3 style="margin: 20px 0 15px; color: var(--primary-color);">⏳ 待审核公告</h3>';
-                html += pending.map((a, i) => {
-                    const realIndex = announcements.indexOf(a);
-                    return `
-                        <div class="announcement-item" style="border-left-color: #FDCB6E;">
-                            <h3>${a.title} <span class="badge badge-pending">待审核</span></h3>
-                            <p>${a.content}</p>
-                            <p style="font-size: 0.85rem; color: var(--light-text);">📅 提交时间：${a.submitTime}</p>
-                            ${a.submitter ? `<p style="font-size: 0.85rem; color: var(--light-text);">👤 提交人：${a.submitter}</p>` : ''}
-                            <div class="action-buttons">
-                                <button class="btn btn-success" onclick="approveAnnouncement(${realIndex})">✅ 通过</button>
-                                <button class="btn btn-danger" onclick="rejectAnnouncement(${realIndex})">❌ 拒绝</button>
-                            </div>
-                        </div>
-                    `;
-                }).join('');
-            }
-            
             if (published.length > 0) {
-                html += '<h3 style="margin: 20px 0 15px; color: var(--primary-color);">✅ 已发布公告</h3>';
-                html += published.map(a => `
+                html += '<h3 style="margin: 20px 0 15px; color: var(--primary-color);">✅ 已发布公告（自动审核）</h3>';
+                html += published.reverse().map((a, i) => `
                     <div class="announcement-item" style="border-left-color: #00B894;">
                         <h3>${a.title} <span class="badge badge-approved">已发布</span></h3>
                         <p>${a.content}</p>
-                        <p style="font-size: 0.85rem; color: var(--light-text);">📅 发布时间：${a.publishTime || a.submitTime}</p>
+                        <p style="font-size: 0.85rem; color: var(--light-text);">📅 发布时间：${a.publishTime || a.submitTime} ${a.submitter ? '| 👤 ' + a.submitter : ''}</p>
+                        <div class="action-buttons">
+                            <button class="btn btn-danger" onclick="deleteAnnouncement(${announcements.length - 1 - i})">🗑️ 删除</button>
+                        </div>
                     </div>
                 `).join('');
             }
@@ -446,24 +431,8 @@
             updateStats();
         }
         
-        function approveAnnouncement(index) {
-            let announcements = [];
-            try {
-                announcements = JSON.parse(localStorage.getItem('danzai_announcements') || '[]');
-            } catch (e) {}
-            
-            if (announcements[index]) {
-                announcements[index].status = 'published';
-                announcements[index].publishTime = new Date().toLocaleString('zh-CN');
-                localStorage.setItem('danzai_announcements', JSON.stringify(announcements));
-                alert('✅ 公告已通过审核并发布！');
-                loadAnnouncements();
-                updateStats();
-            }
-        }
-        
-        function rejectAnnouncement(index) {
-            if (confirm('确定要拒绝这个公告吗？')) {
+        function deleteAnnouncement(index) {
+            if (confirm('确定要删除这个公告吗？')) {
                 let announcements = [];
                 try {
                     announcements = JSON.parse(localStorage.getItem('danzai_announcements') || '[]');
@@ -471,7 +440,7 @@
                 
                 announcements.splice(index, 1);
                 localStorage.setItem('danzai_announcements', JSON.stringify(announcements));
-                alert('❌ 公告已拒绝');
+                alert('✅ 已删除');
                 loadAnnouncements();
                 updateStats();
             }

@@ -8,6 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- 背景音乐 -->
+    <audio id="bgMusic" loop>
+        <source src="https://music.163.com/song/media/outer/url?id=1843260814.mp3" type="audio/mpeg">
+    </audio>
+    <button id="musicToggle" onclick="toggleMusic()" style="position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #A29BFE 0%, #6C5CE7 100%); border: none; font-size: 1.8rem; cursor: pointer; box-shadow: 0 5px 20px rgba(162, 155, 254, 0.4); z-index: 9999; transition: all 0.3s;" title="开关音乐">
+        🔊
+    </button>
+
     <!-- 漂浮的蛋仔装饰 -->
     <div class="floating-decorations">
         <div class="float-egg egg-1">🐣</div>
@@ -197,5 +205,53 @@
     </footer>
 
     <script src="src/app.js"></script>
+    <script>
+        // 音乐控制
+        const bgMusic = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        let isPlaying = false;
+        
+        // 尝试自动播放（需要用户交互后才能播放）
+        window.addEventListener('load', function() {
+            // 检查是否已允许播放
+            const musicEnabled = localStorage.getItem('musicEnabled');
+            if (musicEnabled === 'true') {
+                bgMusic.play().then(() => {
+                    isPlaying = true;
+                    musicToggle.textContent = '🔊';
+                }).catch(e => {
+                    console.log('自动播放被阻止，等待用户交互');
+                });
+            }
+        });
+        
+        // 第一次点击页面任何地方时尝试播放
+        document.addEventListener('click', function firstClick() {
+            const musicEnabled = localStorage.getItem('musicEnabled');
+            if (musicEnabled !== 'false' && musicEnabled !== 'true') {
+                bgMusic.play().then(() => {
+                    isPlaying = true;
+                    musicToggle.textContent = '🔊';
+                    localStorage.setItem('musicEnabled', 'true');
+                }).catch(e => {
+                    localStorage.setItem('musicEnabled', 'false');
+                });
+            }
+            document.removeEventListener('click', firstClick);
+        }, { once: true });
+        
+        function toggleMusic() {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicToggle.textContent = '🔇';
+                localStorage.setItem('musicEnabled', 'false');
+            } else {
+                bgMusic.play();
+                musicToggle.textContent = '🔊';
+                localStorage.setItem('musicEnabled', 'true');
+            }
+            isPlaying = !isPlaying;
+        }
+    </script>
 </body>
 </html>
