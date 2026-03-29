@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星语的蛋仔乐园 - 蛋仔派对玩家交互平台</title>
+    <style>
+        /* 全局样式 */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary-color: #FF6B9D;
+            --secondary-color: #C44569;
+            --accent-color: #FFC312;
+            --bg-color: #FFF5F8;
+            --card-bg: #FFFFFF;
+            --text-color: #2C3A47;
+            --light-text: #718093;
+            --border-radius: 20px;
+            --shadow: 0 10px 30px rgba(255, 107, 157, 0.2);
+        }
+        body {
+            font-family: 'Comic Sans MS', 'ZCOOL KuaiLe', cursive, sans-serif;
+            background: linear-gradient(135deg, #FFF5F8 0%, #FFE4F1 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* 头部 */
+        .header {
+            background: linear-gradient(135deg, #FF6B9D 0%, #C44569 100%);
+            padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(255, 107, 157, 0.3);
+        }
+        .header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { display: flex; align-items: center; gap: 10px; }
+        .logo-icon { font-size: 2.5rem; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .logo h1 { color: white; font-size: 1.8rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+        .nav { display: flex; gap: 15px; flex-wrap: wrap; }
+        .nav a { color: white; text-decoration: none; padding: 8px 16px; border-radius: 20px; }
+        .nav a:hover { background: rgba(255,255,255,0.2); }
+        
+        /* 主视觉 */
+        .hero { padding: 60px 0; text-align: center; }
+        .hero h2 { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 20px; }
+        .hero p { font-size: 1.2rem; margin-bottom: 15px; }
+        .btn {
+            display: inline-block; padding: 15px 40px; border-radius: 30px;
+            background: linear-gradient(135deg, #FF6B9D 0%, #C44569 100%);
+            color: white; text-decoration: none; font-size: 1.2rem; margin-top: 20px;
+        }
+        
+        /* 区块 */
+        section { padding: 40px 0; margin: 20px; background: white; border-radius: 20px; box-shadow: var(--shadow); }
+        .section-title { font-size: 2rem; color: var(--primary-color); text-align: center; margin-bottom: 15px; }
+        .section-desc { text-align: center; color: var(--light-text); margin-bottom: 30px; }
+        
+        /* 玩家卡片 */
+        .players-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 20px; }
+        .player-card {
+            background: linear-gradient(135deg, #FFF5F8 0%, #FFE4F1 100%);
+            border-radius: 20px; padding: 25px; text-align: center;
+            border: 3px solid transparent; transition: all 0.3s;
+        }
+        .player-card:hover { transform: translateY(-5px); border-color: var(--primary-color); }
+        .player-avatar { font-size: 4rem; margin-bottom: 10px; }
+        .player-name { color: var(--primary-color); font-size: 1.3rem; margin-bottom: 10px; }
+        .player-info { font-size: 0.9rem; text-align: left; }
+        .player-info p { margin: 5px 0; }
+        
+        /* 活动卡片 */
+        .activity-card {
+            background: white; border-radius: 20px; padding: 25px; margin: 20px;
+            border-left: 5px solid var(--accent-color);
+        }
+        .activity-title { color: var(--primary-color); font-size: 1.4rem; margin-bottom: 10px; }
+        .activity-date { color: var(--light-text); margin-bottom: 10px; }
+        
+        /* 页脚 */
+        .footer { background: var(--text-color); color: white; padding: 30px; text-align: center; margin-top: 40px; }
+        .footer strong { color: var(--accent-color); }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">🥚</span>
+                <h1>星语的蛋仔乐园</h1>
+            </div>
+            <nav class="nav">
+                <a href="#home">首页</a>
+                <a href="#players">玩家展示</a>
+                <a href="#activities">活动公告</a>
+                <a href="#join">加入我们</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h2>欢迎来到蛋仔乐园！🎉</h2>
+            <p>这里是蛋仔派对玩家的聚集地，一起找队友、参加活动、快乐游戏！</p>
+            <p><strong>本网站由 星语 制作 ❤️</strong></p>
+            <a href="#join" class="btn">立即加入 🚀</a>
+        </div>
+    </section>
+
+    <section id="players">
+        <div class="container">
+            <h2 class="section-title">🎮 玩家展示</h2>
+            <p class="section-desc">认识更多蛋仔小伙伴！</p>
+            <div class="players-grid">
+                <div class="player-card">
+                    <div class="player-avatar">🐰</div>
+                    <h3 class="player-name">蛋仔小可爱</h3>
+                    <div class="player-info">
+                        <p><strong>性别:</strong> 女</p>
+                        <p><strong>年龄:</strong> 11 岁</p>
+                        <p><strong>学校:</strong> 小学五年级</p>
+                        <p><strong>爱好:</strong> 画画、跳舞</p>
+                        <p><strong>游戏模式:</strong> 竞速赛、生存赛</p>
+                        <p><strong>段位:</strong> 鸵鸟蛋 V</p>
+                        <p><strong>氪金:</strong> 低氪</p>
+                        <p><strong>在线:</strong> 每天 2 小时</p>
+                    </div>
+                </div>
+                <div class="player-card">
+                    <div class="player-avatar">🐼</div>
+                    <h3 class="player-name">快乐蛋仔</h3>
+                    <div class="player-info">
+                        <p><strong>性别:</strong> 男</p>
+                        <p><strong>年龄:</strong> 10 岁</p>
+                        <p><strong>学校:</strong> 小学四年级</p>
+                        <p><strong>爱好:</strong> 运动、游戏</p>
+                        <p><strong>游戏模式:</strong> 团队赛</p>
+                        <p><strong>段位:</strong> 鸡蛋 III</p>
+                        <p><strong>氪金:</strong> 中氪</p>
+                        <p><strong>在线:</strong> 周末 4 小时</p>
+                    </div>
+                </div>
+                <div class="player-card">
+                    <div class="player-avatar">🦄</div>
+                    <h3 class="player-name">星星公主</h3>
+                    <div class="player-info">
+                        <p><strong>性别:</strong> 女</p>
+                        <p><strong>年龄:</strong> 12 岁</p>
+                        <p><strong>学校:</strong> 初中一年级</p>
+                        <p><strong>爱好:</strong> 音乐、阅读</p>
+                        <p><strong>游戏模式:</strong> 生存赛</p>
+                        <p><strong>段位:</strong> 鹅蛋 I</p>
+                        <p><strong>氪金:</strong> 低氪</p>
+                        <p><strong>在线:</strong> 每天 1 小时</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="activities">
+        <div class="container">
+            <h2 class="section-title">📢 活动公告</h2>
+            <p class="section-desc">最新活动资讯！</p>
+            <div class="activity-card">
+                <h3 class="activity-title">🎉 3 月周末欢乐赛</h3>
+                <p class="activity-date">📅 2026 年 3 月 28 日 -30 日</p>
+                <p>本周六周日下午 3 点，组织蛋仔派对团队赛！欢迎所有段位的小伙伴参加~ 获胜队伍有神秘小礼物哦！🎁</p>
+            </div>
+            <div class="activity-card">
+                <h3 class="activity-title">🏆 第一届月度蛋仔竞选大赛</h3>
+                <p class="activity-date">📅 2026 年 4 月 1 日 -7 日</p>
+                <p>展示你的蛋仔装扮和游戏技巧，赢取"月度蛋仔王"称号！详情请关注后续公告~</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="join">
+        <div class="container">
+            <h2 class="section-title">🌟 加入我们</h2>
+            <p class="section-desc">填写你的信息，成为蛋仔乐园的一员！</p>
+            <div style="text-align: center; padding: 30px;">
+                <p style="font-size: 1.2rem; margin-bottom: 20px;">玩家注册功能需要访问 GitHub</p>
+                <p style="color: var(--light-text);">如无法访问，可联系站长微信加入</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>🥚 星语的蛋仔乐园 © 2026</p>
+        <p>本网站由 <strong>星语</strong> 制作 | 技术支援：OpenClaw</p>
+        <p>蛋仔派对是网易游戏旗下游戏，本网站为非官方粉丝站点</p>
+    </footer>
+</body>
+</html>

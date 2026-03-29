@@ -1,0 +1,8 @@
+{
+  "name": "danzai-club",
+  "site_id": "auto-create",
+  "build": {
+    "command": "echo 'No build needed'",
+    "publish": "."
+  }
+}

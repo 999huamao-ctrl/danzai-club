@@ -1,0 +1,12 @@
+{
+  "name": "danzai-club",
+  "version": "1.0.0",
+  "description": "星语的蛋仔乐园 - 蛋仔派对玩家交互平台",
+  "scripts": {
+    "dev": "npx http-server -p 3000",
+    "build": "echo 'Static site, no build needed'"
+  },
+  "keywords": ["蛋仔派对", "游戏", "玩家社区"],
+  "author": "星语",
+  "license": "MIT"
+}

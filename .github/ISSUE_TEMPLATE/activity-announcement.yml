@@ -1,0 +1,52 @@
+---
+name: 📢 活动公告
+description: 发布新的活动公告
+title: "【活动公告】请填写活动标题"
+labels: ["activity"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: 🎉 活动标题
+      description: 活动的名称
+      placeholder: 例如：3 月周末欢乐赛
+    validations:
+      required: true
+
+  - type: input
+    id: date
+    attributes:
+      label: 📅 活动日期
+      description: 活动举办的时间
+      placeholder: 例如：2026 年 3 月 28 日 -30 日
+    validations:
+      required: true
+
+  - type: textarea
+    id: content
+    attributes:
+      label: 📝 活动内容
+      description: 活动的详细介绍
+      placeholder: 请描述活动规则、奖励、参与方式等...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: pinned
+    attributes:
+      label: 📌 是否置顶
+      description: 重要活动可以置顶显示
+      options:
+        - 否
+        - 是
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        **发布后：**
+        - 活动将显示在网站的活动公告区
+        - 所有访问网站的玩家都能看到
+        - 可以通过微信号组织玩家参加
