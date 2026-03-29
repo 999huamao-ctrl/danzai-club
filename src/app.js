@@ -104,7 +104,7 @@ function parsePlayerIssue(issue) {
     const body = issue.body || '';
     return {
         name: issue.title.replace('【玩家注册】', '').trim(),
-        avatar: getAvatarFromIssue(body) || '🥚',
+        avatar: getAvatarFromIssue(body) || '🐣',
         gender: extractField(body, '性别') || '未填写',
         age: extractField(body, '年龄') || '未填写',
         school: extractField(body, '职业/就学阶段') || '未填写',
@@ -145,7 +145,7 @@ function renderPlayers(container, players) {
                 <p>🏆 <strong>段位:</strong> ${player.rank}</p>
                 <p>💰 <strong>氪金:</strong> ${player.payment}</p>
                 <p>⏰ <strong>在线:</strong> ${player.playTime}</p>
-                <p>🥚 <strong>蛋号:</strong> ${player.eggId}</p>
+                <p>🐣 <strong>蛋号:</strong> ${player.eggId}</p>
             </div>
             <div style="margin-top: 15px;">
                 <span class="player-tag">🎮 蛋仔派对</span>
