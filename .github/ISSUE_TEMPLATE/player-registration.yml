@@ -1,0 +1,139 @@
+---
+name: 👤 玩家注册
+description: 填写你的信息，加入蛋仔乐园！
+title: "【玩家注册】请填写你的昵称"
+labels: ["player"]
+body:
+  - type: input
+    id: nickname
+    attributes:
+      label: 🎮 游戏昵称
+      description: 你在蛋仔派对中的昵称
+      placeholder: 例如：快乐蛋仔
+    validations:
+      required: true
+
+  - type: dropdown
+    id: avatar
+    attributes:
+      label: 🖼️ 选择头像
+      description: 选择一个你喜欢的卡通头像
+      options:
+        - 🐰 小兔子
+        - 🐼 小熊猫
+        - 🦄 独角兽
+        - 🐱 小猫咪
+        - 🐶 小狗
+        - 🦊 小狐狸
+        - 🐻 小熊
+        - 🐸 青蛙
+        - 🐵 小猴子
+        - 🦁 小狮子
+        - 🐷 小猪
+        - 🐨 考拉
+        - 🐯 小老虎
+        - 🦋 蝴蝶
+        - 🌟 星星
+        - 🌈 彩虹
+        - 🎀 蝴蝶结
+        - 👑 皇冠
+        - 💎 钻石
+        - 🔮 水晶球
+    validations:
+      required: true
+
+  - type: dropdown
+    id: gender
+    attributes:
+      label: 性别
+      options:
+        - 男
+        - 女
+    validations:
+      required: true
+
+  - type: input
+    id: age
+    attributes:
+      label: 年龄
+      placeholder: 例如：10 岁
+    validations:
+      required: true
+
+  - type: input
+    id: school
+    attributes:
+      label: 🏫 职业/就学阶段
+      placeholder: 例如：小学五年级
+    validations:
+      required: true
+
+  - type: input
+    id: hobby
+    attributes:
+      label: 🎨 爱好
+      placeholder: 例如：画画、跳舞、运动
+    validations:
+      required: false
+
+  - type: input
+    id: gameMode
+    attributes:
+      label: 🎮 爱玩的游戏模式
+      placeholder: 例如：竞速赛、生存赛、团队赛
+    validations:
+      required: true
+
+  - type: input
+    id: rank
+    attributes:
+      label: 🏆 游戏段位
+      placeholder: 例如：鹅蛋、鸡蛋、鸵鸟蛋
+    validations:
+      required: true
+
+  - type: dropdown
+    id: payment
+    attributes:
+      label: 💰 氪金等级
+      options:
+        - 低氪
+        - 中氪
+        - 高氪
+    validations:
+      required: true
+
+  - type: input
+    id: playTime
+    attributes:
+      label: ⏰ 上线时长
+      placeholder: 例如：每天 2 小时、周末 4 小时
+    validations:
+      required: true
+
+  - type: input
+    id: eggId
+    attributes:
+      label: 🥚 蛋号（游戏账号）
+      placeholder: 你的蛋仔派对账号
+    validations:
+      required: true
+
+  - type: input
+    id: wechat
+    attributes:
+      label: 💬 微信号
+      description: 用于联系和组织活动
+      placeholder: 你的微信号
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        **温馨提示：**
+        - 提交后管理员会审核你的信息
+        - 审核通过后会展示在玩家展示区
+        - 请确保微信号正确，方便其他玩家联系你
+        - 不要填写真实姓名、学校地址等隐私信息哦！

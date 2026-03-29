@@ -1,0 +1,39 @@
+backend:
+  name: github
+  repo: OWNER/danzai-club
+  branch: main
+  squash_merges: true
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "activities"
+    label: "📢 活动公告"
+    folder: "_activities"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "标题", name: "title", widget: "string"}
+      - {label: "发布日期", name: "date", widget: "datetime"}
+      - {label: "内容", name: "body", widget: "markdown"}
+      - {label: "置顶", name: "pinned", widget: "boolean", default: false}
+
+  - name: "players"
+    label: "🎮 玩家注册"
+    folder: "_players"
+    create: false
+    identifier_field: "name"
+    fields:
+      - {label: "昵称", name: "name", widget: "string"}
+      - {label: "头像", name: "avatar", widget: "select", options: ["🐰", "🐼", "🦄", "🐱", "🐶", "🦊", "🐻", "🐸", "🐵", "🦁", "🐷", "🐨", "🐯", "🦋", "🌟", "🌈", "🎀", "👑", "💎", "🔮"]}
+      - {label: "性别", name: "gender", widget: "select", options: ["男", "女"]}
+      - {label: "年龄", name: "age", widget: "string"}
+      - {label: "职业/就学阶段", name: "school", widget: "string"}
+      - {label: "爱好", name: "hobby", widget: "string"}
+      - {label: "爱玩的游戏模式", name: "gameMode", widget: "string"}
+      - {label: "游戏段位", name: "rank", widget: "string"}
+      - {label: "氪金等级", name: "payment", widget: "select", options: ["低氪", "中氪", "高氪"]}
+      - {label: "上线时长", name: "playTime", widget: "string"}
+      - {label: "蛋号", name: "eggId", widget: "string"}
+      - {label: "微信号", name: "wechat", widget: "string"}
