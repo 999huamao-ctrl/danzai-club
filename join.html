@@ -96,6 +96,40 @@
             font-size: 0.9rem;
             color: #856404;
         }
+        .avatar-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #F0EDF5 0%, #DFE6E9 100%);
+            border: 3px dashed #A29BFE;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .avatar-btn:hover {
+            background: linear-gradient(135deg, #E8E4F0 0%, #E5E0EB 100%);
+            border-color: var(--secondary-color);
+        }
+        .avatar-preview {
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+        .avatar-preview img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid var(--primary-color);
+            object-fit: cover;
+            box-shadow: 0 5px 20px rgba(162, 155, 254, 0.3);
+        }
+        .avatar-preview p {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            margin-top: 12px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -116,13 +150,12 @@
             <div class="form-group">
                 <label>🖼️ 选择头像 <span style="color: #FF6B9D">*</span></label>
                 <input type="file" name="avatar" id="avatarInput" class="required" accept="image/*" capture="user" required style="display: none;">
-                <button type="button" onclick="document.getElementById('avatarInput').click()" style="width: 100%; padding: 15px; background: linear-gradient(135deg, #F0EDF5 0%, #DFE6E9 100%); border: 3px dashed #A29BFE; border-radius: 15px; font-size: 1.1rem; color: var(--text-color); cursor: pointer; transition: all 0.3s;">
+                <button type="button" class="avatar-btn" onclick="document.getElementById('avatarInput').click()">
                     📸 从相册选择照片
                 </button>
-                <p style="font-size: 0.85rem; color: var(--light-text); margin-top: 10px; text-align: center;">支持 JPG、PNG、GIF 格式，可从相册选择或直接拍照</p>
-                <div id="avatarPreview" style="margin-top: 20px; text-align: center; display: none;">
-                    <img id="previewImg" src="" alt="头像预览" style="width: 120px; height: 120px; border-radius: 50%; border: 4px solid var(--primary-color); object-fit: cover; box-shadow: 0 5px 20px rgba(162, 155, 254, 0.3);">
-                    <p style="font-size: 0.9rem; color: var(--primary-color); margin-top: 12px; font-weight: bold;">✅ 头像已选择</p>
+                <div class="avatar-preview" id="avatarPreview">
+                    <img id="previewImg" src="" alt="头像预览">
+                    <p>✅ 头像已选择</p>
                 </div>
             </div>
 
@@ -190,6 +223,8 @@
 
         <div class="back-link">
             <a href="index.html">← 返回首页</a>
+            <span style="margin: 0 10px;">|</span>
+            <a href="players.html">🎮 查看玩家卡片</a>
         </div>
     </div>
 
@@ -198,13 +233,15 @@
         const avatarInput = document.getElementById('avatarInput');
         const avatarPreview = document.getElementById('avatarPreview');
         const previewImg = document.getElementById('previewImg');
+        let avatarDataUrl = '';
         
         avatarInput.addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    previewImg.src = e.target.result;
+                    avatarDataUrl = e.target.result;
+                    previewImg.src = avatarDataUrl;
                     avatarPreview.style.display = 'block';
                 };
                 reader.readAsDataURL(file);
@@ -219,15 +256,43 @@
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
             
-            // 处理头像
-            const avatarFile = document.getElementById('avatarInput').files[0];
-            let avatarData = '🐣'; // 默认头像
+            // 创建玩家对象
+            const player = {
+                id: Date.now(),
+                nickname: data.nickname,
+                avatar: avatarDataUrl || '🐣',
+                gender: data.gender,
+                age: data.age,
+                school: data.school,
+                hobby: data.hobby || '未填写',
+                gameMode: data.gameMode,
+                rank: data.rank,
+                payment: data.payment,
+                playTime: data.playTime,
+                eggId: data.eggId,
+                wechat: data.wechat,
+                joinTime: new Date().toLocaleString('zh-CN')
+            };
+            
+            // 保存到 localStorage
+            let players = [];
+            try {
+                const saved = localStorage.getItem('danzai_players');
+                if (saved) {
+                    players = JSON.parse(saved);
+                }
+            } catch (e) {
+                console.log('读取失败，创建新数组');
+            }
+            
+            players.push(player);
+            localStorage.setItem('danzai_players', JSON.stringify(players));
             
             // 显示成功消息
-            alert('✅ 信息提交成功！\n\n你的蛋仔信息已经展示在玩家区啦！\n\n快去玩家展示区看看你的卡片吧~ 🎉');
+            alert('✅ 信息提交成功！\n\n你的蛋仔信息已保存！\n\n现在可以去玩家展示区查看你的卡片，也能看到其他玩家的卡片哦~ 🎉');
             
             // 跳转到玩家展示区
-            window.location.href = 'index.html#players';
+            window.location.href = 'players.html';
         });
     </script>
 </body>
