@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>填写蛋仔信息 - 快来寻找你的蛋仔搭子</title>
+    <link rel="stylesheet" href="src/style.css">
+    <style>
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #F0EDF5 0%, #DFE6E9 50%, #FFEAA7 100%);
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(162, 155, 254, 0.3);
+        }
+        .form-title {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .form-subtitle {
+            text-align: center;
+            color: var(--light-text);
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            font-weight: bold;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #E0E0E0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        .form-group input.required,
+        .form-group select.required {
+            border-left: 4px solid var(--primary-color);
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #A29BFE 0%, #6C5CE7 100%);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(162, 155, 254, 0.4);
+            transition: all 0.3s;
+        }
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(162, 155, 254, 0.5);
+        }
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .back-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+        .tips {
+            background: #FFF3CD;
+            border-left: 4px solid #FFC312;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1 class="form-title">🐣 填写你的蛋仔信息</h1>
+        <p class="form-subtitle">简单填写，快速找到搭子！</p>
+        
+        <div class="tips">
+            💡 <strong>温馨提示：</strong> 不要填写真实姓名、学校地址等隐私信息哦！
+        </div>
+
+        <form id="playerForm">
+            <div class="form-group">
+                <label>🎮 游戏昵称 <span style="color: #FF6B9D">*</span></label>
+                <input type="text" name="nickname" class="required" placeholder="例如：快乐蛋仔" required>
+            </div>
+
+            <div class="form-group">
+                <label>🖼️ 选择头像 <span style="color: #FF6B9D">*</span></label>
+                <select name="avatar" class="required" required>
+                    <option value="">请选择一个头像</option>
+                    <option value="🐣">🐣 小鸡</option>
+                    <option value="🐰">🐰 兔子</option>
+                    <option value="🐼">🐼 熊猫</option>
+                    <option value="🦄">🦄 独角兽</option>
+                    <option value="🐱">🐱 猫咪</option>
+                    <option value="🐶">🐶 小狗</option>
+                    <option value="🦊">🦊 狐狸</option>
+                    <option value="🐻">🐻 小熊</option>
+                    <option value="🐸">🐸 青蛙</option>
+                    <option value="🐵">🐵 猴子</option>
+                    <option value="🦁">🦁 狮子</option>
+                    <option value="🐷">🐷 小猪</option>
+                    <option value="🐨">🐨 考拉</option>
+                    <option value="🐯">🐯 老虎</option>
+                    <option value="🦋">🦋 蝴蝶</option>
+                    <option value="🌟">🌟 星星</option>
+                    <option value="🌈">🌈 彩虹</option>
+                    <option value="🎀">🎀 蝴蝶结</option>
+                    <option value="👑">👑 皇冠</option>
+                    <option value="💎">💎 钻石</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>👤 性别 <span style="color: #FF6B9D">*</span></label>
+                <select name="gender" class="required" required>
+                    <option value="">请选择</option>
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>🎂 年龄 <span style="color: #FF6B9D">*</span></label>
+                <input type="text" name="age" class="required" placeholder="例如：10 岁" required>
+            </div>
+
+            <div class="form-group">
+                <label>🏫 职业/就学阶段 <span style="color: #FF6B9D">*</span></label>
+                <input type="text" name="school" class="required" placeholder="例如：小学五年级" required>
+            </div>
+
+            <div class="form-group">
+                <label>🎨 爱好</label>
+                <input type="text" name="hobby" placeholder="例如：画画、跳舞、运动">
+            </div>
+
+            <div class="form-group">
+                <label>🎮 爱玩的游戏模式 <span style="color: #FF6B9D">*</span></label>
+                <input type="text" name="gameMode" class="required" placeholder="例如：竞速赛、生存赛、团队赛" required>
+            </div>
+
+            <div class="form-group">
+                <label>🏆 游戏段位 <span style="color: #FF6B9D">*</span></label>
+                <input type="text" name="rank" class="required" placeholder="例如：鹅蛋、鸡蛋、鸵鸟蛋" required>
+            </div>
+
+            <div class="form-group">
+                <label>💰 氪金等级 <span style="color: #FF6B9D">*</span></label>
+                <select name="payment" class="required" required>
+                    <option value="">请选择</option>
+                    <option value="低氪">低氪</option>
+                    <option value="中氪">中氪</option>
+                    <option value="高氪">高氪</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>⏰ 上线时长 <span style="color: #FF6B9D">*</span></label>
+                <input type="text" name="playTime" class="required" placeholder="例如：每天 2 小时、周末 4 小时" required>
+            </div>
+
+            <div class="form-group">
+                <label>🐣 蛋号（游戏账号） <span style="color: #FF6B9D">*</span></label>
+                <input type="text" name="eggId" class="required" placeholder="你的蛋仔派对账号" required>
+            </div>
+
+            <div class="form-group">
+                <label>💬 微信号 <span style="color: #FF6B9D">*</span></label>
+                <input type="text" name="wechat" class="required" placeholder="用于联系和组队" required>
+            </div>
+
+            <button type="submit" class="submit-btn">🎮 提交信息，寻找搭子！</button>
+        </form>
+
+        <div class="back-link">
+            <a href="index.html">← 返回首页</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('playerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 获取表单数据
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // 生成展示内容
+            const content = `
+🎮 **新搭子加入！**
+
+**昵称**: ${data.nickname}
+**头像**: ${data.avatar}
+**性别**: ${data.gender}
+**年龄**: ${data.age}
+**学校**: ${data.school}
+**爱好**: ${data.hobby || '未填写'}
+**游戏模式**: ${data.gameMode}
+**段位**: ${data.rank}
+**氪金**: ${data.payment}
+**在线**: ${data.playTime}
+**蛋号**: ${data.eggId}
+**微信**: ${data.wechat}
+
+---
+🐣 快来和 TA 组队吧！
+            `;
+            
+            // 显示成功消息
+            alert('✅ 信息提交成功！\n\n你的蛋仔信息已经展示在玩家区啦！\n\n快去玩家展示区看看你的卡片吧~ 🎉');
+            
+            // 跳转到玩家展示区
+            window.location.href = 'index.html#players';
+        });
+    </script>
+</body>
+</html>
