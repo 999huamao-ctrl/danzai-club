@@ -9,12 +9,19 @@
 </head>
 <body>
     <!-- 背景音乐 -->
-    <audio id="bgMusic" loop>
-        <source src="https://music.163.com/song/media/outer/url?id=1843260814.mp3" type="audio/mpeg">
+    <audio id="bgMusic" loop preload="auto">
+        <source src="https://web.cdn.127.net/music/1635056667773/1635056667773.mp3" type="audio/mpeg">
+        <source src="https://cdn.jsdelivr.net/gh/txstc55/td-sounds@main/sounds/bgm1.mp3" type="audio/mpeg">
     </audio>
-    <button id="musicToggle" onclick="toggleMusic()" style="position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #A29BFE 0%, #6C5CE7 100%); border: none; font-size: 1.8rem; cursor: pointer; box-shadow: 0 5px 20px rgba(162, 155, 254, 0.4); z-index: 9999; transition: all 0.3s;" title="开关音乐">
-        🔊
+    <button id="musicToggle" onclick="toggleMusic()" style="position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #A29BFE 0%, #6C5CE7 100%); border: none; font-size: 1.8rem; cursor: pointer; box-shadow: 0 5px 20px rgba(162, 155, 254, 0.4); z-index: 9999; transition: all 0.3s; animation: pulse 2s infinite;" title="点击播放音乐">
+        🔇
     </button>
+    <style>
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+    </style>
 
     <!-- 漂浮的蛋仔装饰 -->
     <div class="floating-decorations">
@@ -211,47 +218,88 @@
         const musicToggle = document.getElementById('musicToggle');
         let isPlaying = false;
         
-        // 尝试自动播放（需要用户交互后才能播放）
+        // 设置音量（50%）
+        bgMusic.volume = 0.5;
+        
+        // 页面加载完成后尝试播放
         window.addEventListener('load', function() {
-            // 检查是否已允许播放
             const musicEnabled = localStorage.getItem('musicEnabled');
+            
+            // 如果之前开启过音乐，尝试自动播放
             if (musicEnabled === 'true') {
-                bgMusic.play().then(() => {
-                    isPlaying = true;
-                    musicToggle.textContent = '🔊';
-                }).catch(e => {
-                    console.log('自动播放被阻止，等待用户交互');
-                });
+                playMusic();
+            } else if (musicEnabled === null) {
+                // 第一次访问，显示提示
+                showMusicHint();
             }
         });
         
-        // 第一次点击页面任何地方时尝试播放
-        document.addEventListener('click', function firstClick() {
-            const musicEnabled = localStorage.getItem('musicEnabled');
-            if (musicEnabled !== 'false' && musicEnabled !== 'true') {
-                bgMusic.play().then(() => {
-                    isPlaying = true;
-                    musicToggle.textContent = '🔊';
-                    localStorage.setItem('musicEnabled', 'true');
-                }).catch(e => {
-                    localStorage.setItem('musicEnabled', 'false');
-                });
-            }
-            document.removeEventListener('click', firstClick);
-        }, { once: true });
+        // 显示音乐提示
+        function showMusicHint() {
+            const hint = document.createElement('div');
+            hint.style.cssText = `
+                position: fixed;
+                bottom: 90px;
+                right: 20px;
+                background: white;
+                padding: 15px 20px;
+                border-radius: 15px;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+                z-index: 10000;
+                font-size: 0.95rem;
+                animation: slideUp 0.3s ease;
+            `;
+            hint.innerHTML = '🎵 点击右下角按钮播放背景音乐';
+            document.body.appendChild(hint);
+            
+            setTimeout(() => {
+                hint.style.opacity = '0';
+                hint.style.transition = 'opacity 0.5s';
+                setTimeout(() => hint.remove(), 500);
+            }, 3000);
+        }
         
+        // 播放音乐
+        function playMusic() {
+            bgMusic.play().then(() => {
+                isPlaying = true;
+                musicToggle.textContent = '🔊';
+                musicToggle.style.animation = 'none';
+                localStorage.setItem('musicEnabled', 'true');
+            }).catch(e => {
+                console.log('播放失败:', e);
+                isPlaying = false;
+                musicToggle.textContent = '🔇';
+            });
+        }
+        
+        // 暂停音乐
+        function pauseMusic() {
+            bgMusic.pause();
+            isPlaying = false;
+            musicToggle.textContent = '🔇';
+            musicToggle.style.animation = 'pulse 2s infinite';
+            localStorage.setItem('musicEnabled', 'false');
+        }
+        
+        // 切换音乐状态
         function toggleMusic() {
             if (isPlaying) {
-                bgMusic.pause();
-                musicToggle.textContent = '🔇';
-                localStorage.setItem('musicEnabled', 'false');
+                pauseMusic();
             } else {
-                bgMusic.play();
-                musicToggle.textContent = '🔊';
-                localStorage.setItem('musicEnabled', 'true');
+                playMusic();
             }
-            isPlaying = !isPlaying;
         }
+        
+        // 添加样式动画
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideUp {
+                from { transform: translateY(20px); opacity: 0; }
+                to { transform: translateY(0); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
