@@ -6,22 +6,22 @@
 }
 
 :root {
-    --primary-color: #FF6B9D;
-    --secondary-color: #C44569;
+    --primary-color: #74B9FF;
+    --secondary-color: #0984E3;
     --accent-color: #FFC312;
-    --bg-color: #FFF5F8;
+    --bg-color: #E8F4F8;
     --card-bg: #FFFFFF;
     --text-color: #2C3A47;
     --light-text: #718093;
     --border-radius: 20px;
-    --shadow: 0 10px 30px rgba(255, 107, 157, 0.2);
+    --shadow: 0 10px 30px rgba(116, 185, 255, 0.2);
     --egg-yellow: #FFEAA7;
     --egg-orange: #FAB1A0;
 }
 
 body {
     font-family: 'ZCOOL KuaiLe', cursive, sans-serif;
-    background: linear-gradient(135deg, #FFF5F8 0%, #FFE4F1 50%, #FFEAA7 100%);
+    background: linear-gradient(135deg, #E8F4F8 0%, #DFE6E9 50%, #FFEAA7 100%);
     color: var(--text-color);
     line-height: 1.6;
     min-height: 100vh;
@@ -69,12 +69,12 @@ body {
 
 /* 头部导航 */
 .header {
-    background: linear-gradient(135deg, #FF6B9D 0%, #C44569 100%);
+    background: linear-gradient(135deg, #74B9FF 0%, #0984E3 100%);
     padding: 15px 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 20px rgba(255, 107, 157, 0.3);
+    box-shadow: 0 4px 20px rgba(116, 185, 255, 0.3);
     border-bottom: 4px solid var(--egg-yellow);
 }
 
@@ -253,7 +253,7 @@ body {
     font-size: 3rem;
     color: var(--primary-color);
     margin-bottom: 20px;
-    text-shadow: 3px 3px 6px rgba(255, 107, 157, 0.3);
+    text-shadow: 3px 3px 6px rgba(116, 185, 255, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -314,14 +314,14 @@ body {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #FF6B9D 0%, #C44569 100%);
+    background: linear-gradient(135deg, #74B9FF 0%, #0984E3 100%);
     color: white;
-    box-shadow: 0 5px 20px rgba(255, 107, 157, 0.4);
+    box-shadow: 0 5px 20px rgba(116, 185, 255, 0.4);
 }
 
 .btn-primary:hover {
     transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 30px rgba(255, 107, 157, 0.5);
+    box-shadow: 0 8px 30px rgba(116, 185, 255, 0.5);
 }
 
 .btn-bounce {
@@ -427,7 +427,7 @@ body {
 .player-card:hover {
     transform: translateY(-10px) scale(1.02);
     border-color: var(--primary-color);
-    box-shadow: 0 20px 50px rgba(255, 107, 157, 0.4);
+    box-shadow: 0 20px 50px rgba(116, 185, 255, 0.4);
 }
 
 .player-avatar {
@@ -466,7 +466,7 @@ body {
     transform: translateX(-50%);
     width: 30px;
     height: 3px;
-    background: var(--accent-color);
+    background: var(--secondary-color);
     border-radius: 2px;
 }
 
@@ -492,7 +492,7 @@ body {
     border-radius: 15px;
     font-size: 0.9rem;
     margin: 5px 3px;
-    box-shadow: 0 3px 10px rgba(255, 107, 157, 0.3);
+    box-shadow: 0 3px 10px rgba(116, 185, 255, 0.3);
 }
 
 /* 活动公告区 */
@@ -530,7 +530,7 @@ body {
 
 .activity-card:hover {
     transform: translateX(10px) scale(1.01);
-    box-shadow: 0 15px 40px rgba(255, 195, 18, 0.3);
+    box-shadow: 0 15px 40px rgba(116, 185, 255, 0.3);
 }
 
 .activity-title {
@@ -562,7 +562,7 @@ body {
     padding: 80px 0;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, #FFEAA7 0%, #FAB1A0 100%);
+    background: linear-gradient(135deg, #74B9FF 0%, #FFEAA7 100%);
 }
 
 .join-bg {
@@ -626,7 +626,7 @@ body {
 .step:hover {
     transform: translateY(-5px);
     border-color: var(--primary-color);
-    box-shadow: 0 10px 30px rgba(255, 107, 157, 0.2);
+    box-shadow: 0 10px 30px rgba(116, 185, 255, 0.2);
 }
 
 .step-number {
