@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初始化虚拟数据 - 星语的蛋仔乐园</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #A29BFE 0%, #6C5CE7 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .container {
+            background: rgba(255,255,255,0.95);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 600px;
+            color: #2C3A47;
+        }
+        h1 {
+            color: #6C5CE7;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .status {
+            background: #F0F0F0;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .success {
+            color: #00B894;
+            font-weight: bold;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #A29BFE 0%, #6C5CE7 100%);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐣 初始化虚拟数据</h1>
+        <div class="status" id="status">正在加载虚拟玩家和公告...</div>
+        <a href="index.html" class="btn">🏠 返回首页</a>
+        <a href="players.html" class="btn" style="background: linear-gradient(135deg, #00B894 0%, #55EFC4 100%);">🎮 查看玩家</a>
+    </div>
+
+    <script>
+        // 虚拟玩家数据
+        const virtualPlayers = [
+            {
+                id: 1,
+                nickname: '蛋仔小可爱',
+                avatar: '🐰',
+                gender: '女',
+                age: '11 岁',
+                school: '小学五年级',
+                hobby: '画画、跳舞、做手工',
+                gameMode: '竞速赛、生存赛',
+                rank: '鸵鸟蛋 V',
+                payment: '低氪',
+                playTime: '每天 2 小时，周末全天',
+                eggId: 'EGG123456',
+                wechat: 'danzi_xiaokeai',
+                note: '希望能找到固定队友一起冲关！',
+                joinTime: '2026-03-29 10:30:00'
+            },
+            {
+                id: 2,
+                nickname: '快乐蛋仔',
+                avatar: '🐼',
+                gender: '男',
+                age: '10 岁',
+                school: '小学四年级',
+                hobby: '运动、打游戏、拼乐高',
+                gameMode: '团队赛、躲猫猫',
+                rank: '鸡蛋 III',
+                payment: '中氪',
+                playTime: '周末 4 小时，平时 1 小时',
+                eggId: 'EGG789012',
+                wechat: 'happy_egg007',
+                note: '喜欢组队，性格好相处~',
+                joinTime: '2026-03-29 11:15:00'
+            },
+            {
+                id: 3,
+                nickname: '星星公主',
+                avatar: '🦄',
+                gender: '女',
+                age: '12 岁',
+                school: '初中一年级',
+                hobby: '音乐、阅读、弹钢琴',
+                gameMode: '生存赛、躲猫猫',
+                rank: '鹅蛋 I',
+                payment: '低氪',
+                playTime: '每天 1 小时，周末 3 小时',
+                eggId: 'EGG345678',
+                wechat: 'star_princess',
+                note: '想找女生一起玩，一起变强！',
+                joinTime: '2026-03-29 12:00:00'
+            },
+            {
+                id: 4,
+                nickname: '闪电蛋仔',
+                avatar: '⚡',
+                gender: '男',
+                age: '11 岁',
+                school: '小学五年级',
+                hobby: '跑步、游泳、电竞',
+                gameMode: '竞速赛、淘汰赛',
+                rank: '鸵鸟蛋 III',
+                payment: '中氪',
+                playTime: '每天 3 小时',
+                eggId: 'EGG901234',
+                wechat: 'lightning_fast',
+                note: '竞速赛大神，带飞！',
+                joinTime: '2026-03-29 13:20:00'
+            },
+            {
+                id: 5,
+                nickname: '萌萌哒蛋',
+                avatar: '🌸',
+                gender: '女',
+                age: '9 岁',
+                school: '小学三年级',
+                hobby: '看动画、画画、收集皮肤',
+                gameMode: '休闲模式、拍照模式',
+                rank: '鸡蛋 I',
+                payment: '高氪',
+                playTime: '周末 5 小时',
+                eggId: 'EGG567890',
+                wechat: 'mengmeng_dan',
+                note: '新手求带飞，有很多好看皮肤哦~',
+                joinTime: '2026-03-29 14:00:00'
+            }
+        ];
+
+        // 虚拟公告数据
+        const virtualAnnouncements = [
+            {
+                id: 1,
+                title: '🎉 周末欢乐赛活动公告',
+                content: '各位蛋仔小伙伴们好！\n\n这周六周日（3 月 30 日 -31 日）下午 3 点，我们将组织周末欢乐赛活动！\n\n📅 活动时间：周六周日 15:00-17:00\n🎮 活动内容：团队竞速赛 + 生存赛\n🏆 奖励设置：获胜队伍每人获得游戏道具礼包\n👥 参与方式：添加微信 danzi_xiaokeai 报名\n\n欢迎所有段位的小伙伴参加，一起快乐游戏！🐣',
+                status: 'published',
+                submitTime: '2026-03-29 10:00:00',
+                publishTime: '2026-03-29 10:00:00',
+                submitter: '蛋仔小可爱'
+            },
+            {
+                id: 2,
+                title: '🏆 第一届月度蛋仔竞选大赛',
+                content: '蛋仔乐园第一届月度竞选开始啦！\n\n📅 活动时间：4 月 1 日 -7 日\n🎯 参赛要求：\n- 蛋仔乐园注册玩家\n- 游戏段位不限\n- 需要提交：蛋仔装扮截图 + 游戏精彩时刻视频\n\n🏅 奖项设置：\n- 🥇 冠军：月度蛋仔王称号 + 神秘礼包\n- 🥈 亚军：蛋仔乐园荣誉成员 + 游戏道具\n- 🥉 季军：纪念头像框\n\n📝 报名方式：在网站提交公告申请\n\n快来参加吧！🐣💫',
+                status: 'published',
+                submitTime: '2026-03-29 11:30:00',
+                publishTime: '2026-03-29 11:30:00',
+                submitter: '星星公主'
+            },
+            {
+                id: 3,
+                title: '👥 寻找固定队友',
+                content: '大家好！我是快乐蛋仔~\n\n想找几个固定队友一起玩游戏！\n\n🎮 我常玩的模式：团队赛、躲猫猫\n⏰ 游戏时间：周末全天，平时晚上 7-9 点\n🏆 我的段位：鸡蛋 III\n💬 联系方式：happy_egg007\n\n希望队友们：\n✅ 性格开朗，不骂人\n✅ 有时间一起组队\n✅ 段位相近，一起进步\n\n感兴趣的加我微信哦！🐣',
+                status: 'published',
+                submitTime: '2026-03-29 12:15:00',
+                publishTime: '2026-03-29 12:15:00',
+                submitter: '快乐蛋仔'
+            },
+            {
+                id: 4,
+                title: '⚡ 竞速赛教学开讲啦！',
+                content: '各位蛋仔好，我是闪电蛋仔！\n\n本人鸵鸟蛋 III 段位，擅长各种竞速赛技巧。现决定每周开一次教学车！\n\n📅 时间：每周六下午 2 点\n🎮 内容：\n- 起步技巧\n- 道具使用\n- 路线选择\n- 进阶操作\n\n👥 人数：每次限 5 人\n💬 报名：加微信 lightning_fast\n\n新手老手都欢迎，包教包会！🏆',
+                status: 'published',
+                submitTime: '2026-03-29 13:45:00',
+                publishTime: '2026-03-29 13:45:00',
+                submitter: '闪电蛋仔'
+            },
+            {
+                id: 5,
+                title: '🌸 新手求带飞！',
+                content: '大家好呀~ 我是萌萌哒蛋，今年 9 岁！\n\n刚玩蛋仔派对不久，还是个新手，想找有耐心的大佬带带我~\n\n🎮 我喜欢的模式：休闲模式、拍照模式\n⏰ 游戏时间：周末\n🏆 当前段位：鸡蛋 I\n💬 微信：mengmeng_dan\n\n我有好多好看的皮肤哦，可以一起拍照打卡！希望能找到温柔的小伙伴一起玩~ 🐣💕',
+                status: 'published',
+                submitTime: '2026-03-29 14:30:00',
+                publishTime: '2026-03-29 14:30:00',
+                submitter: '萌萌哒蛋'
+            }
+        ];
+
+        // 保存到 localStorage
+        try {
+            localStorage.setItem('danzai_players', JSON.stringify(virtualPlayers));
+            localStorage.setItem('danzai_announcements', JSON.stringify(virtualAnnouncements));
+            
+            document.getElementById('status').innerHTML = `
+                <p class="success">✅ 初始化成功！</p>
+                <p>🐣 已创建 <strong>${virtualPlayers.length}</strong> 位虚拟玩家</p>
+                <p>📢 已创建 <strong>${virtualAnnouncements.length}</strong> 条虚拟公告</p>
+                <p style="margin-top: 15px; color: #718093; font-size: 0.9rem;">数据已保存到浏览器，刷新页面后仍然显示。</p>
+            `;
+        } catch (e) {
+            document.getElementById('status').innerHTML = `
+                <p style="color: #FF7675;">❌ 保存失败：${e.message}</p>
+                <p>请检查浏览器是否允许 localStorage</p>
+            `;
+        }
+    </script>
+</body>
+</html>
