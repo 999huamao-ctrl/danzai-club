@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: OWNER/danzai-club
+  repo: 999huamao-ctrl/danzai-club
   branch: main
   squash_merges: true
 

@@ -2,7 +2,7 @@
 
 // 配置 - 需要替换为实际的 GitHub 信息
 const CONFIG = {
-    githubOwner: 'OWNER', // 将被替换为实际的 GitHub 用户名
+    githubOwner: '999huamao-ctrl', // GitHub 用户名
     githubRepo: 'danzai-club',
     playersLabel: 'player',
     activitiesLabel: 'activity'
