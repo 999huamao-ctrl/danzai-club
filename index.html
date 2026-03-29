@@ -8,100 +8,181 @@
     <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- 漂浮的蛋仔装饰 -->
+    <div class="floating-decorations">
+        <div class="float-egg egg-1">🥚</div>
+        <div class="float-egg egg-2">🌟</div>
+        <div class="float-egg egg-3">🎈</div>
+        <div class="float-egg egg-4">🍭</div>
+        <div class="float-egg egg-5">⭐</div>
+        <div class="float-egg egg-6">🎀</div>
+    </div>
+
     <!-- 头部导航 -->
     <header class="header">
         <div class="container">
             <div class="logo">
-                <span class="logo-icon">🥚</span>
+                <div class="logo-egg">
+                    <span class="egg-body">🥚</span>
+                    <span class="egg-eyes">👀</span>
+                </div>
                 <h1>星语的蛋仔乐园</h1>
+                <span class="logo-badge">✨</span>
             </div>
             <nav class="nav">
-                <a href="#home">首页</a>
-                <a href="#players">玩家展示</a>
-                <a href="#activities">活动公告</a>
-                <a href="#join">加入我们</a>
+                <a href="#home" class="nav-item">🏠 首页</a>
+                <a href="#players" class="nav-item">🎮 玩家</a>
+                <a href="#activities" class="nav-item">📢 活动</a>
+                <a href="#join" class="nav-item nav-cta">🌟 加入</a>
             </nav>
         </div>
     </header>
 
     <!-- 主视觉区域 -->
     <section id="home" class="hero">
+        <div class="hero-bg">
+            <div class="cloud cloud-1">☁️</div>
+            <div class="cloud cloud-2">☁️</div>
+            <div class="cloud cloud-3">☁️</div>
+            <div class="rainbow">🌈</div>
+        </div>
         <div class="container">
             <div class="hero-content">
-                <h2>欢迎来到蛋仔乐园！🎉</h2>
-                <p>这里是蛋仔派对玩家的聚集地，一起找队友、参加活动、快乐游戏！</p>
-                <p class="subtitle">本网站由 <strong>星语</strong> 制作 ❤️</p>
-                <a href="#join" class="btn btn-primary">立即加入 🚀</a>
-            </div>
-            <div class="hero-image">
-                <div class="floating-egg">🥚</div>
-                <div class="floating-star">⭐</div>
-                <div class="floating-cloud">☁️</div>
+                <div class="hero-mascot">
+                    <div class="mascot-egg">🥚</div>
+                    <div class="mascot-crown">👑</div>
+                </div>
+                <h2 class="hero-title">
+                    <span class="title-egg">🥚</span>
+                    欢迎来到蛋仔乐园！
+                    <span class="title-egg">🥚</span>
+                </h2>
+                <p class="hero-desc">这里是蛋仔派对玩家的聚集地，一起找队友、参加活动、快乐游戏！</p>
+                <div class="hero-features">
+                    <span class="feature-tag">🎮 找队友</span>
+                    <span class="feature-tag">🏆 参加比赛</span>
+                    <span class="feature-tag">🎁 赢奖励</span>
+                </div>
+                <a href="#join" class="btn btn-primary btn-bounce">立即加入 🚀</a>
+                <p class="hero-credit">本网站由 <strong class="star-name">⭐ 星语 ⭐</strong> 制作</p>
             </div>
         </div>
     </section>
+
+    <!-- 蛋仔装饰分隔线 -->
+    <div class="egg-divider">
+        <span>🥚</span><span>⭐</span><span>🥚</span><span>⭐</span><span>🥚</span>
+    </div>
 
     <!-- 玩家展示区 -->
     <section id="players" class="players-section">
-        <div class="container">
+        <div class="section-header">
             <h2 class="section-title">🎮 玩家展示</h2>
-            <p class="section-desc">认识更多蛋仔小伙伴，一起组队玩游戏！</p>
+            <p class="section-subtitle">认识更多蛋仔小伙伴，一起组队冲关！</p>
+            <div class="title-decoration">
+                <span>🏆</span><span>🥇</span><span>🎖️</span>
+            </div>
+        </div>
+        <div class="container">
             <div id="players-grid" class="players-grid">
-                <!-- 玩家卡片将通过 JS 动态加载 -->
-                <div class="loading">加载中... 🥚</div>
+                <div class="loading">
+                    <span class="loading-egg">🥚</span>
+                    <p>加载中...</p>
+                </div>
             </div>
         </div>
     </section>
+
+    <!-- 蛋仔装饰分隔线 -->
+    <div class="egg-divider">
+        <span>🌟</span><span>🎈</span><span>🌟</span><span>🎈</span><span>🌟</span>
+    </div>
 
     <!-- 活动公告区 -->
     <section id="activities" class="activities-section">
-        <div class="container">
+        <div class="section-header">
             <h2 class="section-title">📢 活动公告</h2>
-            <p class="section-desc">最新活动资讯，不要错过哦！</p>
+            <p class="section-subtitle">精彩活动不停歇，快来参加！</p>
+            <div class="title-decoration">
+                <span>🎉</span><span>🎊</span><span>🎁</span>
+            </div>
+        </div>
+        <div class="container">
             <div id="activities-list" class="activities-list">
-                <!-- 活动卡片将通过 JS 动态加载 -->
-                <div class="loading">加载中... 📢</div>
+                <div class="loading">
+                    <span class="loading-egg">📢</span>
+                    <p>加载中...</p>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- 蛋仔装饰分隔线 -->
+    <div class="egg-divider">
+        <span>🥚</span><span>🌈</span><span>🥚</span><span>🌈</span><span>🥚</span>
+    </div>
+
     <!-- 加入我们 -->
     <section id="join" class="join-section">
+        <div class="join-bg">
+            <div class="join-cloud">☁️</div>
+            <div class="join-star">⭐</div>
+        </div>
         <div class="container">
-            <h2 class="section-title">🌟 加入我们</h2>
-            <p class="section-desc">填写你的信息，成为蛋仔乐园的一员！</p>
-            
-            <div class="join-steps">
-                <div class="step">
-                    <div class="step-icon">1️⃣</div>
-                    <h3>点击注册按钮</h3>
-                    <p>跳转到 GitHub 填写你的信息</p>
+            <div class="join-card">
+                <div class="join-icon">🌟</div>
+                <h2 class="section-title">加入我们</h2>
+                <p class="section-subtitle">填写你的信息，成为蛋仔乐园的一员！</p>
+                
+                <div class="join-steps">
+                    <div class="step">
+                        <div class="step-number">1️⃣</div>
+                        <div class="step-icon">📝</div>
+                        <h3>点击注册</h3>
+                        <p>跳转到 GitHub 填写信息</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2️⃣</div>
+                        <div class="step-icon">🎮</div>
+                        <h3>填写资料</h3>
+                        <p>告诉我们你的游戏信息</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3️⃣</div>
+                        <div class="step-icon">✨</div>
+                        <h3>审核展示</h3>
+                        <p>通过后展示你的卡片</p>
+                    </div>
                 </div>
-                <div class="step">
-                    <div class="step-icon">2️⃣</div>
-                    <h3>填写玩家资料</h3>
-                    <p>告诉我们你的游戏信息</p>
+                
+                <div class="join-cta">
+                    <a href="https://github.com/999huamao-ctrl/danzai-club/issues/new?template=player-registration.yml" 
+                       class="btn btn-primary btn-large btn-glow" target="_blank">
+                       🎮 立即注册
+                    </a>
                 </div>
-                <div class="step">
-                    <div class="step-icon">3️⃣</div>
-                    <h3>等待审核展示</h3>
-                    <p>通过后你的卡片就会展示在这里</p>
+                
+                <div class="join-tips">
+                    <span>💡 提示：</span>
+                    <span>🔒 信息仅用于玩家交流</span>
+                    <span>⚠️ 不要填写真实隐私信息</span>
                 </div>
             </div>
-            
-            <a href="https://github.com/999huamao-ctrl/danzai-club/issues/new?template=player-registration.yml" 
-               class="btn btn-primary btn-large" target="_blank">
-               立即注册 🎮
-            </a>
         </div>
     </section>
 
     <!-- 页脚 -->
     <footer class="footer">
+        <div class="footer-eggs">
+            <span>🥚</span><span>🥚</span><span>🥚</span>
+        </div>
         <div class="container">
-            <p>🥚 星语的蛋仔乐园 © 2026</p>
-            <p>本网站由 <strong>星语</strong> 制作 | 技术支援：OpenClaw</p>
-            <p>蛋仔派对是网易游戏旗下游戏，本网站为非官方粉丝站点</p>
+            <p class="footer-title">🥚 星语的蛋仔乐园 © 2026</p>
+            <p class="footer-credit">本网站由 <strong>⭐ 星语 ⭐</strong> 制作 | 技术支援：OpenClaw</p>
+            <p class="footer-disclaimer">蛋仔派对是网易游戏旗下游戏，本网站为非官方粉丝站点</p>
+            <div class="footer-decoration">
+                <span>🌟</span><span>🎈</span><span>🌈</span><span>🎀</span><span>🌟</span>
+            </div>
         </div>
     </footer>
 
