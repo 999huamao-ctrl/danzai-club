@@ -114,30 +114,13 @@
             </div>
 
             <div class="form-group">
-                <label>🖼️ 选择头像 <span style="color: #FF6B9D">*</span></label>
-                <select name="avatar" class="required" required>
-                    <option value="">请选择一个头像</option>
-                    <option value="🐣">🐣 小鸡</option>
-                    <option value="🐰">🐰 兔子</option>
-                    <option value="🐼">🐼 熊猫</option>
-                    <option value="🦄">🦄 独角兽</option>
-                    <option value="🐱">🐱 猫咪</option>
-                    <option value="🐶">🐶 小狗</option>
-                    <option value="🦊">🦊 狐狸</option>
-                    <option value="🐻">🐻 小熊</option>
-                    <option value="🐸">🐸 青蛙</option>
-                    <option value="🐵">🐵 猴子</option>
-                    <option value="🦁">🦁 狮子</option>
-                    <option value="🐷">🐷 小猪</option>
-                    <option value="🐨">🐨 考拉</option>
-                    <option value="🐯">🐯 老虎</option>
-                    <option value="🦋">🦋 蝴蝶</option>
-                    <option value="🌟">🌟 星星</option>
-                    <option value="🌈">🌈 彩虹</option>
-                    <option value="🎀">🎀 蝴蝶结</option>
-                    <option value="👑">👑 皇冠</option>
-                    <option value="💎">💎 钻石</option>
-                </select>
+                <label>🖼️ 上传头像 <span style="color: #FF6B9D">*</span></label>
+                <input type="file" name="avatar" id="avatarInput" class="required" accept="image/*" required style="padding: 10px; border: 2px dashed #A29BFE; background: #F8F9FA;">
+                <p style="font-size: 0.85rem; color: var(--light-text); margin-top: 8px;">📸 可以上传自己的照片或喜欢的图片（支持 JPG、PNG 格式）</p>
+                <div id="avatarPreview" style="margin-top: 15px; text-align: center; display: none;">
+                    <img id="previewImg" src="" alt="头像预览" style="width: 100px; height: 100px; border-radius: 50%; border: 3px solid var(--primary-color); object-fit: cover;">
+                    <p style="font-size: 0.85rem; color: var(--primary-color); margin-top: 8px;">✅ 头像已选择</p>
+                </div>
             </div>
 
             <div class="form-group">
@@ -208,6 +191,24 @@
     </div>
 
     <script>
+        // 头像预览功能
+        const avatarInput = document.getElementById('avatarInput');
+        const avatarPreview = document.getElementById('avatarPreview');
+        const previewImg = document.getElementById('previewImg');
+        
+        avatarInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImg.src = e.target.result;
+                    avatarPreview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // 表单提交
         document.getElementById('playerForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -215,26 +216,9 @@
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
             
-            // 生成展示内容
-            const content = `
-🎮 **新搭子加入！**
-
-**昵称**: ${data.nickname}
-**头像**: ${data.avatar}
-**性别**: ${data.gender}
-**年龄**: ${data.age}
-**学校**: ${data.school}
-**爱好**: ${data.hobby || '未填写'}
-**游戏模式**: ${data.gameMode}
-**段位**: ${data.rank}
-**氪金**: ${data.payment}
-**在线**: ${data.playTime}
-**蛋号**: ${data.eggId}
-**微信**: ${data.wechat}
-
----
-🐣 快来和 TA 组队吧！
-            `;
+            // 处理头像
+            const avatarFile = document.getElementById('avatarInput').files[0];
+            let avatarData = '🐣'; // 默认头像
             
             // 显示成功消息
             alert('✅ 信息提交成功！\n\n你的蛋仔信息已经展示在玩家区啦！\n\n快去玩家展示区看看你的卡片吧~ 🎉');
