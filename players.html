@@ -189,7 +189,12 @@
     </div>
 
     <script>
-        // 加载玩家数据
+        // 加载玩家数据和公告
+        function loadAll() {
+            loadPlayers();
+            loadAnnouncements();
+        }
+        
         function loadPlayers() {
             const playersGrid = document.getElementById('playersGrid');
             const playerCount = document.getElementById('playerCount');
@@ -256,8 +261,34 @@
             });
         }
         
+        // 加载公告
+        function loadAnnouncements() {
+            let announcements = [];
+            try {
+                const saved = localStorage.getItem('danzai_announcements');
+                if (saved) {
+                    announcements = JSON.parse(saved);
+                }
+            } catch (e) {}
+            
+            const published = announcements.filter(a => a.status === 'published');
+            
+            if (published.length > 0) {
+                const activitiesList = document.getElementById('activitiesList');
+                if (activitiesList) {
+                    activitiesList.innerHTML = published.map(a => `
+                        <div class="activity-card">
+                            <h3 class="activity-title">${a.title}</h3>
+                            <p class="activity-date">📅 ${a.publishTime || a.submitTime} ${a.submitter ? '| 👤 ' + a.submitter : ''}</p>
+                            <div class="activity-content">${a.content.replace(/\n/g, '<br>')}</div>
+                        </div>
+                    `).join('');
+                }
+            }
+        }
+        
         // 页面加载时执行
-        document.addEventListener('DOMContentLoaded', loadPlayers);
+        document.addEventListener('DOMContentLoaded', loadAll);
     </script>
 </body>
 </html>

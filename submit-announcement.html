@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>提交公告 - 快来寻找你的蛋仔搭子</title>
+    <link rel="stylesheet" href="src/style.css">
+    <style>
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #F0EDF5 0%, #DFE6E9 50%, #FFEAA7 100%);
+        }
+        .form-container {
+            max-width: 700px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(162, 155, 254, 0.3);
+        }
+        .form-title {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        .form-subtitle {
+            text-align: center;
+            color: var(--light-text);
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            font-weight: bold;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #E0E0E0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #A29BFE 0%, #6C5CE7 100%);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(162, 155, 254, 0.4);
+            transition: all 0.3s;
+        }
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(162, 155, 254, 0.5);
+        }
+        .back-link {
+            text-align: center;
+            margin-top: 25px;
+        }
+        .back-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+        .tips {
+            background: #FFF3CD;
+            border-left: 4px solid #FFC312;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            color: #856404;
+            line-height: 1.8;
+        }
+        .tips strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        .info-box {
+            background: linear-gradient(135deg, #F0EDF5 0%, #DFE6E9 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .info-box p {
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1 class="form-title">📢 提交公告申请</h1>
+        <p class="form-subtitle">分享你的想法，经过审核后发布</p>
+        
+        <div class="info-box">
+            <p>🎮 想要组织活动？分享游戏心得？<br>
+            在这里提交你的公告，站长审核通过后会发布在首页哦！</p>
+        </div>
+        
+        <div class="tips">
+            <strong>📋 审核须知：</strong>
+            ✅ 内容必须与蛋仔派对游戏相关<br>
+            ✅ 语言文明，不得包含不当内容<br>
+            ✅ 活动公告需要写明时间、内容、参与方式<br>
+            ⏳ 审核时间：通常 24 小时内<br>
+            ❌ 广告、引流、不当内容将被拒绝
+        </div>
+
+        <form id="announcementForm">
+            <div class="form-group">
+                <label>📝 公告标题 <span style="color: #FF6B9D">*</span></label>
+                <input type="text" name="title" required placeholder="例如：周末欢乐赛活动公告">
+            </div>
+
+            <div class="form-group">
+                <label>📄 公告内容 <span style="color: #FF6B9D">*</span></label>
+                <textarea name="content" required placeholder="详细描述你的公告内容...
+
+如果是活动公告，请写明：
+- 活动时间
+- 活动内容
+- 参与方式
+- 奖励设置（如有）"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>👤 你的昵称（选填）</label>
+                <input type="text" name="submitter" placeholder="审核后显示为公告发布者">
+            </div>
+
+            <div class="form-group">
+                <label>💬 联系方式（选填）</label>
+                <input type="text" name="contact" placeholder="微信号或 QQ 号，方便站长联系你">
+            </div>
+
+            <button type="submit" class="submit-btn">📢 提交审核</button>
+        </form>
+
+        <div class="back-link">
+            <a href="index.html">← 返回首页</a>
+            <span style="margin: 0 15px;">|</span>
+            <a href="join.html">📝 填写玩家信息</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('announcementForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const title = formData.get('title').trim();
+            const content = formData.get('content').trim();
+            const submitter = formData.get('submitter').trim() || '匿名玩家';
+            const contact = formData.get('contact').trim();
+            
+            if (!title || !content) {
+                alert('❌ 请填写标题和内容');
+                return;
+            }
+            
+            if (content.length < 20) {
+                alert('❌ 公告内容太短了，请至少写 20 个字');
+                return;
+            }
+            
+            // 保存到待审核列表
+            let announcements = [];
+            try {
+                announcements = JSON.parse(localStorage.getItem('danzai_announcements') || '[]');
+            } catch (e) {}
+            
+            announcements.push({
+                id: Date.now(),
+                title: title,
+                content: content,
+                status: 'pending',
+                submitTime: new Date().toLocaleString('zh-CN'),
+                submitter: submitter,
+                contact: contact || ''
+            });
+            
+            localStorage.setItem('danzai_announcements', JSON.stringify(announcements));
+            
+            // 显示成功消息
+            alert('✅ 提交成功！\n\n你的公告已提交审核，站长会在 24 小时内审核。\n审核通过后会发布在首页公告区！\n\n请等待站长通知~ 🐣');
+            
+            // 清空表单
+            this.reset();
+            
+            // 跳转到首页
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
